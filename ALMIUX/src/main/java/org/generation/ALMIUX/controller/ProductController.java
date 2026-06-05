@@ -25,6 +25,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProducts());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProductById(@PathVariable Long id){
+
+        return ResponseEntity.ok(
+                productService.getProductById(id)
+        );
+    }
+
     // Mapeo de CreateProduct
     @PostMapping("/create-product")
     public ResponseEntity<?> createProduct(@RequestBody Product newProduct){

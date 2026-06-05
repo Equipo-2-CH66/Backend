@@ -7,28 +7,32 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class ProductService {
-}
-
 @Service
 public class ProductService {
 
     private final ProductRepository productRepository;
 
     @Autowired
-    public ProductService(ProductRepository productRepository){
+    public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
     // Método para obtener productos
-    public List<Product> getProducts(){
+    public List<Product> getProducts() {
         return productRepository.findAll();
     }
 
     // Método para crear productos
-    public Product createProduct(Product newProduct){
+    public Product createProduct(Product newProduct) {
         return productRepository.save(newProduct);
     }
 
 
+    // Método para obtener producto por ID
+    public Product getProductById(Long id){
+        return productRepository.findById(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Producto no encontrado")
+                );
+    }
 }
