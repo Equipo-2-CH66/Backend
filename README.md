@@ -88,42 +88,13 @@ Todos están listados en `.gitignore`.
 ---
 
 ## Estructura del proyecto
-src/main/java/org/generation/ALMIUX/
-├── config/
-│   └── SecurityConfig.java          # Configuración de Spring Security y BCryptPasswordEncoder
-├── controller/
-│   ├── UserController.java          # Endpoints de usuarios
-│   ├── ProductController.java       # Endpoints de productos
-│   ├── CategoryController.java      # Endpoints de categorías
-│   ├── OrderController.java         # Endpoints de pedidos
-│   └── OrderDetailController.java   # Endpoints de detalles de pedido
-├── exceptions/
-│   ├── GlobalExceptionHandler.java  # Manejo centralizado de errores HTTP
-│   ├── UserNotFoundException.java
-│   ├── ProductNotFoundException.java
-│   ├── CategoryNotFoundException.java
-│   ├── OrderNotFoundException.java
-│   └── OrderDetailNotFoundException.java
-├── model/
-│   ├── User.java                    # Entidad USUARIOS
-│   ├── UserRole.java                # Enum: CLIENTE, ADMIN
-│   ├── Product.java                 # Entidad PRODUCTOS
-│   ├── Category.java                # Entidad CATEGORIAS
-│   ├── Order.java                   # Entidad PEDIDOS
-│   ├── OrderDetail.java             # Entidad DETALLE_PEDIDO
-│   └── OrderStatus.java             # Enum: PENDIENTE, EN_PROCESO, ENVIADO, ENTREGADO, CANCELADO
-├── repository/
-│   ├── UserRepository.java
-│   ├── ProductRepository.java
-│   ├── CategoryRepository.java
-│   ├── OrderRepository.java
-│   └── OrderDetailRepository.java
-└── service/
-├── UserService.java
-├── ProductService.java
-├── CategoryService.java
-├── OrderService.java
-└── OrderDetailService.java
+
+- `config/` — Configuración de Spring Security y BCryptPasswordEncoder
+- `controller/` — Endpoints de usuarios, productos, categorías, pedidos y detalles
+- `exceptions/` — Manejo centralizado de errores HTTP y excepciones personalizadas
+- `model/` — Entidades JPA: User, Product, Category, Order, OrderDetail
+- `repository/` — Interfaces de acceso a base de datos
+- `service/` — Lógica de negocio para cada entidad
 
 ---
 
