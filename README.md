@@ -27,7 +27,10 @@ API REST desarrollada con **Spring Boot 3** para la plataforma ALMIUX. Gestiona 
 
 ---
 
-## Configuración
+## Configuración (para cada integrante del equipo)
+
+> `application.properties` está en `.gitignore` y **no se sube a GitHub** porque contiene contraseñas.
+> Cada integrante debe crearlo localmente siguiendo estos pasos.
 
 ### 1. Crear la base de datos en MySQL
 
@@ -35,25 +38,50 @@ API REST desarrollada con **Spring Boot 3** para la plataforma ALMIUX. Gestiona 
 CREATE DATABASE almiux_db;
 ```
 
-### 2. Configurar credenciales
+### 2. Crear tu archivo de configuración local
 
-Editar el archivo `src/main/resources/application.properties`:
+Copia la plantilla incluida en el repositorio y renómbrala:
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/almiux_db?useSSL=false&serverTimezone=UTC
-spring.datasource.username=TU_USUARIO
-spring.datasource.password=TU_CONTRASEÑA
+```bash
+# Mac / Linux
+cp src/main/resources/application.properties.example src/main/resources/application.properties
+
+# Windows (CMD)
+copy src\main\resources\application.properties.example src\main\resources\application.properties
 ```
 
-### 3. Levantar el servidor
+### 3. Editar con tus credenciales
+
+Abre `src/main/resources/application.properties` y cambia estos dos valores:
+
+```properties
+spring.datasource.username=TU_USUARIO_MYSQL
+spring.datasource.password=TU_CONTRASEÑA_MYSQL
+```
+
+> Si tu MySQL local no tiene contraseña (instalación por defecto), deja `password=` en blanco.
+
+### 4. Levantar el servidor
 
 ```bash
 ./gradlew bootRun
 ```
 
-El servidor inicia en `http://localhost:8080`.
+El servidor inicia en `http://localhost:8080`.  
+Las tablas se crean automáticamente gracias a `spring.jpa.hibernate.ddl-auto=update`.
 
-> Las tablas se crean automáticamente gracias a `spring.jpa.hibernate.ddl-auto=update`.
+---
+
+## Archivos que NO se suben a GitHub
+
+| Archivo | Razón |
+|---|---|
+| `application.properties` | Contiene credenciales de BD |
+| `build/` | Archivos compilados generados localmente |
+| `.idea/`, `.vscode/` | Configuración del editor de cada quien |
+| `.DS_Store` | Archivo interno de macOS |
+
+Todos están listados en `.gitignore`.
 
 ---
 
@@ -105,7 +133,7 @@ src/main/java/org/generation/ALMIUX/
 ```
 USUARIOS (1) ──────────────── (N) PEDIDOS (1) ──────────────── (N) DETALLE_PEDIDO
                                                                           │
-CATEGORIAS (1) ──────── (N) PRODUCTOS (N) ───────────────────────────────┘
+CATEGORIAS (1) ──────── (N) PRODUCTOS (N) ────────────────────────────────┘
 ```
 
 ### Tablas y relaciones
@@ -295,3 +323,30 @@ Producto no encontrado con id: 99
 - **CORS:** Actualmente configurado para aceptar cualquier origen (`*`). Restringir antes de pasar a producción.
 - **`ddl-auto=update`:** Hibernate actualiza el esquema automáticamente. Cambiar a `validate` o `none` en producción.
 - **Seguridad HTTP:** Actualmente todos los endpoints son públicos. Configurar autenticación JWT antes de producción.
+
+---
+
+## Equipo
+
+**404 Team Not Found** · Generación [número de generación]
+
+<!-- ============================================================
+     IMAGEN SUGERIDA #8
+     Foto grupal del equipo o grid con las fotos de perfil de cada integrante.
+     ![Equipo 404 Team Not Found](./images/readme/foto-equipo.png)
+     ============================================================ -->
+
+| Integrante | Rol                      |
+|---|--------------------------|
+| **Kaleb Torres** | Developer · Scrum Master |
+| **Danna Remigio** | Frontend Developer       |
+| **Arturo Ramírez** | Frontend Developer       |
+| **Yarilis Hernández** | Frontend Developer       |
+| **Zared Ortiz** | Backend Developer        |
+| **Noé Hernández** | QA Tester                |
+| **Diego Quiñónez** | Backend Developer        |
+
+---
+
+*© 2026 · Abarrotes Almiux · Hecho en México con ❤️*
+*Proyecto académico — Generation México Bootcamp*

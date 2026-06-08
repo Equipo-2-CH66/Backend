@@ -8,7 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // ** I
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-// ** Clase de configuración de Spring Security: expone el bean PasswordEncoder y configura los permisos HTTP
+// ** Clase de configuración de Spring Security: Expone el bean PasswordEncoder y configura los permisos HTTP
 @Configuration
 @EnableWebSecurity // ** Habilita la configuración personalizada de seguridad web
 public class SecurityConfig {

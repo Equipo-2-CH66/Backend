@@ -1,6 +1,7 @@
 package org.generation.ALMIUX.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore; // ** Importa la anotación para ocultar campos en el JSON de respuesta
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email; // ** Validación de formato de email
 import jakarta.validation.constraints.NotBlank; // ** Validación de campo no vacío
@@ -44,8 +45,9 @@ public class User {
     @Column(name = "direccion") // ** Columna "direccion" del diagrama ER
     private String direccion;
 
-    @JsonIgnore // * Excluye password_hash del JSON de respuesta para no exponerlo en la API
-    @Column(name = "password_hash", nullable = false) // * Columna renombrada a "password_hash" para coincidir con el diagrama ER
+    // @JsonIgnore // * Excluye password_hash del JSON de respuesta para no exponerlo en la API
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Acepta en request, oculta en response
+    @Column(name = "password_hash", nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING) // ** Persiste el nombre del enum como texto ("CLIENTE" o "ADMIN")
