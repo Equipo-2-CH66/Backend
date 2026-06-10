@@ -38,7 +38,7 @@ public class Order {
     @Column(name = "fecha_pedido", nullable = false)
     private LocalDateTime fechaPedido;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)  //Cambiar LAZY a EAGER para asegurar que los datos del usuario siempre esten listos y cargados al momento de transformarse en el JSON
     @JoinColumn(name = "id_usuario", nullable = false) // * Renombrada la FK de "user_id" a "id_usuario" para coincidir con el diagrama ER
     private User user;
 

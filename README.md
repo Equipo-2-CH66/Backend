@@ -70,6 +70,8 @@ spring.datasource.password=TU_CONTRASEÑA_MYSQL
 El servidor inicia en `http://localhost:8080`.  
 Las tablas se crean automáticamente gracias a `spring.jpa.hibernate.ddl-auto=update`.
 
+![Backend corriendo en IntelliJ](./images/readme/Spring.png)
+
 ---
 
 ## Archivos que NO se suben a GitHub
@@ -87,54 +89,18 @@ Todos están listados en `.gitignore`.
 
 ## Estructura del proyecto
 
-```
-src/main/java/org/generation/ALMIUX/
-├── config/
-│   └── SecurityConfig.java          # Configuración de Spring Security y BCryptPasswordEncoder
-├── controller/
-│   ├── UserController.java          # Endpoints de usuarios
-│   ├── ProductController.java       # Endpoints de productos
-│   ├── CategoryController.java      # Endpoints de categorías
-│   ├── OrderController.java         # Endpoints de pedidos
-│   └── OrderDetailController.java   # Endpoints de detalles de pedido
-├── exceptions/
-│   ├── GlobalExceptionHandler.java  # Manejo centralizado de errores HTTP
-│   ├── UserNotFoundException.java
-│   ├── ProductNotFoundException.java
-│   ├── CategoryNotFoundException.java
-│   ├── OrderNotFoundException.java
-│   └── OrderDetailNotFoundException.java
-├── model/
-│   ├── User.java                    # Entidad USUARIOS
-│   ├── UserRole.java                # Enum: CLIENTE, ADMIN
-│   ├── Product.java                 # Entidad PRODUCTOS
-│   ├── Category.java                # Entidad CATEGORIAS
-│   ├── Order.java                   # Entidad PEDIDOS
-│   ├── OrderDetail.java             # Entidad DETALLE_PEDIDO
-│   └── OrderStatus.java             # Enum: PENDIENTE, EN_PROCESO, ENVIADO, ENTREGADO, CANCELADO
-├── repository/
-│   ├── UserRepository.java
-│   ├── ProductRepository.java
-│   ├── CategoryRepository.java
-│   ├── OrderRepository.java
-│   └── OrderDetailRepository.java
-└── service/
-    ├── UserService.java
-    ├── ProductService.java
-    ├── CategoryService.java
-    ├── OrderService.java
-    └── OrderDetailService.java
-```
+- `config/` — Configuración de Spring Security y BCryptPasswordEncoder
+- `controller/` — Endpoints de usuarios, productos, categorías, pedidos y detalles
+- `exceptions/` — Manejo centralizado de errores HTTP y excepciones personalizadas
+- `model/` — Entidades JPA: User, Product, Category, Order, OrderDetail
+- `repository/` — Interfaces de acceso a base de datos
+- `service/` — Lógica de negocio para cada entidad
 
 ---
 
 ## Diagrama Entidad-Relación
 
-```
-USUARIOS (1) ──────────────── (N) PEDIDOS (1) ──────────────── (N) DETALLE_PEDIDO
-                                                                          │
-CATEGORIAS (1) ──────── (N) PRODUCTOS (N) ────────────────────────────────┘
-```
+![Diagrama Entidad-Relación ALMIUX](./images/readme/Entidad-Relacion.png)
 
 ### Tablas y relaciones
 
@@ -177,6 +143,8 @@ POST /api/v1.0/users
   "rol": "CLIENTE"
 }
 ```
+
+![Ejemplo de endpoint en Postman](./images/readme/Danna-Migajera.png)
 
 ---
 
@@ -302,9 +270,7 @@ Todos los errores devuelven respuestas JSON con el código HTTP correspondiente.
 ```
 
 **Ejemplo de error 404:**
-```
 Producto no encontrado con id: 99
-```
 
 ---
 
@@ -328,25 +294,19 @@ Producto no encontrado con id: 99
 
 ## Equipo
 
-**404 Team Not Found** · Generación [número de generación]
+**404 Team Not Found** · Generation México Bootcamp
 
-<!-- ============================================================
-     IMAGEN SUGERIDA #8
-     Foto grupal del equipo o grid con las fotos de perfil de cada integrante.
-     ![Equipo 404 Team Not Found](./images/readme/foto-equipo.png)
-     ============================================================ -->
-
-| Integrante | Rol                      |
-|---|--------------------------|
+| Integrante | Rol |
+|---|---|
 | **Kaleb Torres** | Developer · Scrum Master |
-| **Danna Remigio** | Frontend Developer       |
-| **Arturo Ramírez** | Frontend Developer       |
-| **Yarilis Hernández** | Frontend Developer       |
-| **Zared Ortiz** | Backend Developer        |
-| **Noé Hernández** | QA Tester                |
-| **Diego Quiñónez** | Backend Developer        |
+| **Danna Remigio** | Frontend Developer |
+| **Arturo Ramírez** | Frontend Developer |
+| **Yarilis Hernández** | Frontend Developer |
+| **Zared Ortiz** | Backend Developer |
+| **Noé Hernández** | QA Tester |
+| **Diego Quiñónez** | Backend Developer |
 
 ---
 
-*© 2026 · Abarrotes Almiux · Hecho en México con ❤️*
+*© 2026 · Abarrotes Almiux · Hecho en México con ❤️*  
 *Proyecto académico — Generation México Bootcamp*
