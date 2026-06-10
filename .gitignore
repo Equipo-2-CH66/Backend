@@ -17,6 +17,7 @@ build/
 .idea/
 *.iml
 *.iws
+*.claude
 
 # ============================================================
 # Archivos de Eclipse / STS
