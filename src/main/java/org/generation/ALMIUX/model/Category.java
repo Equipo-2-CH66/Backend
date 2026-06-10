@@ -16,7 +16,7 @@ public class Category {
     @Column(unique = true, nullable = false)
     private String nombre;
 
-    @NotBlank(message = "El slug es obligatorio") // ** Valida que slug no sea vacío
+    // @NotBlank(message = "El slug es obligatorio") // ** Valida que slug no sea vacío
     @Column(nullable = false) // * Se elimina columnDefinition = "TEXT" porque el diagrama ER define slug como VARCHAR, no TEXT
     private String slug;
 

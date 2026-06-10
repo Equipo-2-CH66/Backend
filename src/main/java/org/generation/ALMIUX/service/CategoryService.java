@@ -43,6 +43,20 @@ public class CategoryService {
     // Crear una nueva categoría
     @Transactional
     public Category createCategory(Category newCategory) {
+        // Genera slug automáticamente desde el nombre
+        String slug = newCategory.getNombre()
+                .toLowerCase()
+                .trim()
+                .replaceAll("[áàä]", "a")
+                .replaceAll("[éèë]", "e")
+                .replaceAll("[íìï]", "i")
+                .replaceAll("[óòö]", "o")
+                .replaceAll("[úùü]", "u")
+                .replaceAll("[ñ]", "n")
+                .replaceAll("[^a-z0-9\\s-]", "")
+                .replaceAll("\\s+", "-");
+
+        newCategory.setSlug(slug);
         return categoryRepository.save(newCategory);
     }
 

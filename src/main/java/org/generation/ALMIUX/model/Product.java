@@ -16,7 +16,8 @@ public class Product {
     private Long id;
 
     // ** Relación Many-to-One con Category: un producto pertenece a una categoría
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull(message = "La categoría es obligatoria")
+    @ManyToOne(fetch = FetchType.EAGER) // Se cambia porque no se puede obtener back
     @JoinColumn(name = "id_categoria", nullable = false) // ** Crea la columna FK "id_categoria" en la tabla productos
     private Category categoria;
 
