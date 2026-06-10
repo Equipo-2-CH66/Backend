@@ -16,7 +16,7 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Autoincremental
     @Column(name = "id_usuario") // * Columna renombrada de "id_user" a "id_usuario" para coincidir con el diagrama ER
     private Long id;
 

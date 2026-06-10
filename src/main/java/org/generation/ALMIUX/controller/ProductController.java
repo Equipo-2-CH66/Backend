@@ -1,5 +1,6 @@
 package org.generation.ALMIUX.controller;
 
+import jakarta.validation.Valid;
 import org.generation.ALMIUX.exceptions.ProductNotFoundException; // ** Importa la excepción personalizada para manejar productos no encontrados
 import org.generation.ALMIUX.model.Product;
 import org.generation.ALMIUX.service.ProductService;
@@ -40,7 +41,7 @@ public class ProductController {
 
     // Crear nuevo producto
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product newProduct) { // * Tipado correcto; movido a POST en /api/v1.0/products
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product newProduct) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(productService.createProduct(newProduct));
